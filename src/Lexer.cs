@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace The_Language_V1
 {
-    class Lexer
+    static class Lexer
     {
         public static Dictionary<TokenType, Regex> tokenRegex = new Dictionary<TokenType, Regex>
         {
@@ -29,10 +29,12 @@ namespace The_Language_V1
             { TokenType.VariableName, CaretOptionalWS("\\w+") },
         };
 
-        private List<Token> tokens = new List<Token>();
+       
 
-        public List<Token> Lex(string input)
+        public static List<Token> Lex(string input)
         {
+
+            List<Token> tokens = new List<Token>();
 
             input = input.Replace("\n", "");
             while (input.IndexOf("  ") != -1)
